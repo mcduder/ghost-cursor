@@ -42,7 +42,7 @@ export function path(
   spreadOverride?: number
 ): Vector[] {
   const defaultWidth = 100;
-  const minSteps = 25;
+  const minSteps = 45;
   const width = isBox(end) ? end.width : defaultWidth;
   const curve = bezierCurve(start, end, spreadOverride);
   const length = Math.sqrt(((end.x - start.x)^2) + ((end.y - start.y)^2));
@@ -81,7 +81,7 @@ const steps = [
 ];
 
 const clampPositive = (vectors: Vector[]): Vector[] => {
-  const clamp0 = (elem: number) => Math.max(0, elem);
+  const clamp0 = (elem: number) => Math.round(Math.max(0, elem));
   return vectors.map(vector => {
     return {
       x: clamp0(vector.x),
